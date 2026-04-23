@@ -1,0 +1,1044 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f5f2ec;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.container {
+  max-width: 420px;
+  height: 100vh;
+  margin: 0 auto;
+  background: url('hero.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  text-align: center;
+  color: #6b4a34;
+  padding: 20px;
+}
+
+/* верхний текст */
+.subtitle {
+  font-size: 13px;
+  letter-spacing: 3.5px;
+  margin-bottom: 35px;
+  opacity: 0.85;
+}
+
+
+.date, .time {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(8px);
+}
+
+/* ДАТА */
+.date {
+  margin-top: 400px;
+  font-family: 'Libra Serif Modern', cursive;
+  font-size: 20px;
+  letter-spacing: 4px;
+
+  animation: fadeUp 1.6s ease forwards;
+  animation-delay: 0.8s; /* сначала пауза */
+}
+
+/* ВРЕМЯ */
+.time {
+  margin-top: 10px;
+  font-family: 'Libra Serif Modern', cursive;
+  font-size: 13px;
+  letter-spacing: 2px;
+  opacity: 0.8;
+
+  animation: fadeUp 1.6s ease forwards;
+  animation-delay: 1.4s; /* появляется после даты */
+}
+
+/* АНИМАЦИЯ */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(10px);
+  }
+
+  60% {
+    opacity: 1;
+    filter: blur(4px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.invite-section {
+  position: relative;
+  height: 80vh;
+  max-width: 420px;
+  margin: 0 auto;
+  background: url('invit.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+/* контейнер занавеса */
+.curtain {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  z-index: 5;
+  overflow: hidden;
+}
+
+/* левая часть */
+.curtain-left,
+.curtain-right {
+  width: 50%;
+  height: 100%;
+  background-image: url('curtain.jpg'); /* твоя картинка */
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform 2s ease;
+}
+
+/* левая половина */
+.curtain-left {
+  background-position: left center;
+}
+
+/* правая половина */
+.curtain-right {
+  background-position: right center;
+}
+
+/* состояние ОТКРЫТО */
+.invite-section.show .curtain-left {
+  transform: translateX(-100%);
+}
+
+.invite-section.show .curtain-right {
+  transform: translateX(100%);
+}
+
+/* затемнение для читаемости */
+.overlay {
+  /* position: absolute;
+  inset: 0;
+  background: rgba(120, 90, 60, 0.45); */
+   z-index: 2;
+}
+
+.invite-content {
+  position: relative;
+  text-align: left;
+  color: #fff;
+  padding: 20px;
+  z-index: 1;
+}
+.guest {
+  font-family: 'Great Vibes', bold;
+  font-size: 64px;
+  color: #f7eddc;
+  margin-bottom: 20px;
+
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(6px);
+  animation: fadeUp 1.5s ease forwards;
+}
+/* текст */
+.invite-text {
+  font-family: 'Cormorant Garamond bold', serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.45; /* МЕНЬШЕ расстояние */
+  color: #ffffff;
+  margin-bottom: 30px;
+
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(6px);
+  animation: fadeUp 1.5s ease forwards;
+  animation-delay: 0.4s;
+}
+
+/* календарь БЕЗ фона */
+.calendar {
+  padding: 10px;
+}
+
+/* месяц */
+.month {
+  font-family: 'Cormorant Garamond bold', serif;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 2px;
+margin-bottom: 10px;
+  opacity: 0;
+  animation: fadeUp 1.5s ease forwards;
+  animation-delay: 0.8s;
+}
+
+.weekdays, .days {
+  font-family: 'Cormorant Garamond ', serif;
+  font-weight: 500;
+  font-size: 20px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+   gap: 6px;
+  opacity: 0;
+  animation: fadeUp 1.5s ease forwards;
+  animation-delay: 1s;
+}
+
+/* дни */
+.days span {
+  padding: 6px 0;
+}
+
+/* день свадьбы */
+.wedding-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* СЕРДЦЕ С ДВОЙКОЙ */
+.heart {
+  position: relative;
+  width: 26px;
+  height: 24px;
+  background: rgba(255, 200, 200, 0.4);
+  transform: rotate(-45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond bold', serif;
+  font-size: 32px;
+  color: #ffffff;
+  animation: pulse 1.5s infinite;
+}
+
+/* верхние части сердца */
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 24px;
+  background: rgba(255, 200, 200, 0.4);
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -13px;
+  left: 0;
+}
+
+.heart::after {
+  left: 13px;
+  top: 0;
+}
+
+/* чтобы цифра не крутилась */
+.heart {
+  transform: rotate(-45deg);
+}
+
+.heart span {
+  transform: rotate(45deg);
+}
+
+/* пульсация */
+@keyframes pulse {
+  0% { transform: rotate(-45deg) scale(1); }
+  50% { transform: rotate(-45deg) scale(1.15); }
+  100% { transform: rotate(-45deg) scale(1); }
+}
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(10px);
+  }
+
+  60% {
+    opacity: 1;
+    filter: blur(3px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.schedule-section {
+  background: url('timing.jpg') center/cover no-repeat;
+  max-width: 420px;
+  height: 100vh;
+  margin: 0 auto;
+  position: relative;
+}
+.schedule-title,
+.schedule-item {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(8px);
+}
+.schedule-section.show .schedule-title {
+  animation: fadeUp 1s ease forwards;
+}
+
+/* 13:00 */
+.schedule-section.show .schedule-item:nth-of-type(1) {
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.3s;
+}
+
+/* 15:00 */
+.schedule-section.show .schedule-item:nth-of-type(3) {
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.6s;
+}
+
+/* 16:00 */
+.schedule-section.show .schedule-item:nth-of-type(5) {
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.9s;
+}
+
+/* контейнер по центру */
+.schedule-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ЗАГОЛОВОК (в рамке сверху) */
+.schedule-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 40px;
+  letter-spacing: 4px;
+  color: #6b4a34;
+
+  margin-top: 155px; /* подогнано под рамку */
+  text-align: center;
+}
+
+/* ОБЩИЙ БЛОК С ВРЕМЕНЕМ */
+.schedule-item {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 13:00 — НАД ПЕРВОЙ ЛИНИЕЙ */
+.schedule-item:nth-of-type(1) {
+  margin-top: 170px;
+}
+
+/* 15:00 — МЕЖДУ ЛИНИЯМИ */
+.schedule-item:nth-of-type(3) {
+  margin-top: 120px;
+}
+
+/* 16:00 — ПОД ВТОРОЙ ЛИНИЕЙ */
+.schedule-item:nth-of-type(5) {
+  margin-top: 100px;
+}
+
+/* ВРЕМЯ (крупное, красивое) */
+.time-big {
+  font-family: 'Cormorant Garamon', serif;
+  font-weight: 550;
+  font-size: 40px;
+  color: #6b4a34;
+}
+
+/* НАЗВАНИЕ */
+.event {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 530;
+  font-size: 30px;
+  color: #6b4a34;
+  text-align: right;
+}
+
+/* ЛОКАЦИЯ */
+.location-section {
+  max-width: 420px;
+  height: 110vh;
+  margin: 0 auto;
+  background: url('location.jpg') center/cover no-repeat;
+  position: relative;
+}
+
+.location-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+/* заголовок */
+.location-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  letter-spacing: 4px;
+  color: #6b4a34;
+  margin-top: 80px;
+
+  opacity: 0;
+}
+
+/* блок */
+.location-item {
+  margin-top: 35px;
+
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(6px);
+}
+
+/* маленький текст */
+.location-label {
+  display: block;
+  font-size: 23px;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+/* название */
+.location-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  color: #6b4a34;
+  margin-bottom: 5px;
+}
+
+/* адрес */
+.location-address {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+/* кнопка */
+.map-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid #b48c50;
+  color: #b48c50;
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+/* фото */
+.location-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* АНИМАЦИЯ */
+.location-section.show .location-title {
+  animation: fadeUp 1s ease forwards;
+}
+
+.location-section.show .location-item:nth-child(2) {
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.3s;
+}
+
+.location-section.show .location-item:nth-child(3) {
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.7s;
+}
+
+.gallery-section {
+  max-width: 420px;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* все картинки */
+.slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* слайды */
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+/* активный */
+.slide.active {
+  opacity: 1;
+}
+
+/* кнопки */
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  background: rgba(255,255,255,0.4);
+  border: none;
+  font-size: 22px;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+/* слева */
+.prev {
+  left: 10px;
+}
+
+/* справа */
+.next {
+  right: 10px;
+}
+.dress-section {
+  max-width: 400px;
+  height: 80vh;
+  margin: 0 auto;
+
+  background: url('dress-code.jpg') center/contain no-repeat; /* ТВОЙ ФОН */
+  background-color: #f5f2ec;
+  position: relative;
+  overflow: hidden;
+}
+
+/* контейнер кружков */
+.color-palette {
+  position: absolute;
+  
+  bottom: 226px; /* регулируешь вертикаль */
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 48px;
+}
+
+/* кружки */
+.color {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  box-shadow: 
+    inset 0 2px 6px rgba(255,255,255,0.4),
+    0 4px 10px rgba(0,0,0,0.2);
+
+  transform: scale(0.8);
+  opacity: 0;
+  animation: glow 3s infinite alternate;
+}
+
+/* цвета */
+.c1 {
+  background: radial-gradient(circle at 30% 30%, #ffb347, #e67e22);
+}
+
+.c2 {
+  background: radial-gradient(circle at 30% 30%, #fff3a0, #f1c40f);
+}
+
+.c3 {
+  background: radial-gradient(circle at 30% 30%, #ed5252, #ff1900);
+}
+
+.c4 {
+  background: radial-gradient(circle at 30% 30%, #ec6ebd, #e3448b);
+}
+
+/* анимация появления */
+.dress-section.show .color:nth-child(1) {
+  animation: popIn 0.6s ease forwards;
+  animation-delay: 0.2s;
+}
+
+.dress-section.show .color:nth-child(2) {
+  animation: popIn 0.6s ease forwards;
+  animation-delay: 0.35s;
+}
+
+.dress-section.show .color:nth-child(3) {
+  animation: popIn 0.6s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.dress-section.show .color:nth-child(4) {
+  animation: popIn 0.6s ease forwards;
+  animation-delay: 0.65s;
+}
+
+/* анимация */
+@keyframes glow {
+  from { box-shadow: 0 0 5px rgba(255,200,100,0.2); }
+  to   { box-shadow: 0 0 12px rgba(255,200,100,0.5); }
+}
+@keyframes popIn {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ДЕТАЛИ */
+
+.details-section {
+  max-width: 420px;
+  height: 100vh;
+  margin: 0 auto;
+
+  background: url('details.jpg') center/100% 100% no-repeat; /* ТВОЙ ФОН */
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== ВУАЛЬ (анимация открытия) ===== */
+.reveal {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    #f5f2ec 0%,
+    #f5f2ec 40%,
+    rgba(245, 242, 236, 0.8) 70%,
+    rgba(245, 242, 236, 0) 100%
+  );
+
+  transform: translateY(0);
+  transition: transform 1.8s ease;
+  z-index: 2;
+}
+
+/* когда открыто */
+.details-section.show .reveal {
+  transform: translateY(-100%);
+}
+
+/* ===== КНОПКА ===== */
+.chat-btn {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%) translateY(30px);
+
+  padding: 12px 26px;
+  border-radius: 30px;
+
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  letter-spacing: 1px;
+
+  color: #b48c50;
+  border: 1px solid #b48c50;
+  text-decoration: none;
+
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(6px);
+
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+/* hover */
+.chat-btn:hover {
+  background: #b48c50;
+  color: #fff;
+}
+
+/* появление */
+.details-section.show .chat-btn {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  transition-delay: 2s;
+}
+
+.rsvp-section {
+  max-width: 420px;
+  height: 100vh;
+  margin: 0 auto;
+  background: #f5f2ec;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rsvp-content {
+  width: 100%;
+  padding: 30px 25px;
+  text-align: left;
+}
+
+/* ЗАГОЛОВОК */
+.rsvp-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  letter-spacing: 6px;
+  color: #8c9b6e; /* мягкий оливково-золотой */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* ПОДЗАГОЛОВОК */
+.rsvp-subtitle {
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #6b4a34;
+  margin-bottom: 40px;
+}
+
+/* ФОРМА */
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* ЛЕЙБЛЫ */
+.rsvp-form label {
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: #6b4a34;
+}
+
+/* INPUT */
+.rsvp-form input {
+  border: none;
+  border-bottom: 1px solid #cbb89d;
+  background: transparent;
+  padding: 8px 0;
+
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  color: #6b4a34;
+  outline: none;
+}
+
+/* placeholder */
+.rsvp-form input::placeholder {
+  color: #b7a58a;
+}
+
+.rsvp-section {
+  max-width: 400px;
+  height: 80vh;
+  margin: 0 auto;
+
+  /* ТВОЙ ФОН */
+  background: url('ancet.jpg') center/cover no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rsvp-content {
+  width: 100%;
+  padding: 30px 25px;
+  text-align: left;
+}
+
+/* ЗАГОЛОВОК */
+.rsvp-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  letter-spacing: 6px;
+  color: #6b4a34; /* ТВОЙ ОСНОВНОЙ ЦВЕТ */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* ПОДЗАГОЛОВОК */
+.rsvp-subtitle {
+  text-align: center;
+  font-size: 23px;
+  letter-spacing: 2px;
+  color: #6b4a34;
+  margin-bottom: 40px;
+}
+
+/* ФОРМА */
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* ЛЕЙБЛЫ */
+.rsvp-form label {
+  font-size: 23px;
+  letter-spacing: 1px;
+  color: #6b4a34;
+}
+
+/* INPUT */
+.rsvp-form input {
+  border: none;
+  border-bottom: 1px solid rgba(107, 74, 52, 0.4);
+  background: transparent;
+  padding: 8px 0;
+
+  font-family: 'Cormorant Garamond bold', serif;
+  font-size: 26px;
+  color: #6b4a34;
+  outline: none;
+}
+
+/* placeholder */
+.rsvp-form input::placeholder {
+  color: rgba(107, 74, 52, 0.5);
+}
+
+.rsvp-question {
+  text-align: left;
+  font-size: 23px;
+  letter-spacing: 2px;
+  color: #6b4a34;
+  margin-bottom: 0px;
+}
+
+/* RADIO ГРУППА */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 5px;
+}
+
+/* RADIO */
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #6b4a34;
+}
+
+/* скрываем стандартный */
+.radio input {
+  display: none;
+}
+
+/* круг */
+.radio span {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #6b4a34;
+  border-radius: 50%;
+  position: relative;
+}
+
+/* выбранный */
+.radio input:checked + span::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 8px;
+  height: 8px;
+  background: #b48c50;
+  border-radius: 50%;
+}
+
+/* КНОПКА */
+/* КНОПКА */
+.rsvp-form button {
+  position: relative;
+
+  padding: 8px 18px;
+  border: 1px solid rgba(107, 74, 52, 0.4);
+  border-radius: 8px;
+
+  background: transparent;
+  color: #6b4a34;
+
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  letter-spacing: 2px;
+
+  cursor: pointer;
+  overflow: hidden;
+
+  transition: color 0.4s ease;
+}
+
+/* ЛИНИЯ СВЕРХУ (анимация) */
+.rsvp-form button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 0%;
+  height: 1px;
+
+  background: #b48c50;
+  transition: width 0.4s ease;
+}
+
+/* ЛИНИЯ СНИЗУ */
+.rsvp-form button::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  width: 0%;
+  height: 1px;
+
+  background: #b48c50;
+  transition: width 0.4s ease;
+}
+
+/* ХОВЕР */
+.rsvp-form button:hover {
+  color: #b48c50;
+}
+
+/* анимация линий */
+.rsvp-form button:hover::before {
+  width: 100%;
+}
+
+.rsvp-form button:hover::after {
+  width: 100%;
+}
+
+/* ЛЁГКОЕ СВЕЧЕНИЕ */
+.rsvp-form button:hover {
+  box-shadow: 0 0 10px rgba(180, 140, 80, 0.2);
+}
+
+/* SUCCESS */
+.rsvp-success {
+  margin-top: 20px;
+  text-align: center;
+  color: #6b4a34;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.rsvp-success.show {
+  opacity: 1;
+}
+
+.timer-section {
+  max-width: 400px;
+  height: 80vh;
+  margin: 0 auto;
+
+  background: url('timer.jpg') center/cover no-repeat; /* ТВОЙ ФОН */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+
+.timer-content {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+}
+
+/* заголовок */
+.timer-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px;
+  letter-spacing: 4px;
+  margin-top: 300px;
+  margin-bottom: 30px;
+}
+
+/* блок таймера */
+.timer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* отдельный блок */
+.time-box {
+  text-align: center;
+}
+
+/* цифры */
+.time-box span {
+  display: block;
+  font-family: 'Cormorant Garamond bold', serif;
+  font-size: 46px;
+  letter-spacing: 2px;
+
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* подписи */
+.time-box p {
+  font-size: 22px;
+  letter-spacing: 2px;
+  opacity: 0.8;
+}
