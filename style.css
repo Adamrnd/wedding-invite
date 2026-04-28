@@ -1000,4 +1000,110 @@ margin-bottom: 10px;
   letter-spacing: 2px;
   opacity: 0.8;
 }
+/* ===== КОНТАКТЫ ===== */
 
+.contacts-section {
+  max-width: 420px;
+  padding: 60px 20px;
+  margin: 0 auto;
+
+  background: url('contacts.jpg') center/cover no-repeat;;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contacts-content {
+  width: 100%;
+  padding: 30px 25px;
+  text-align: center;
+}
+
+/* заголовок */
+.contacts-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  letter-spacing: 6px;
+  color: #6b4a34;
+  margin-bottom: 25px;
+
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* текст */
+.contacts-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #6b4a34;
+  margin-bottom: 35px;
+
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* имя */
+.contact-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: #b48c50;
+  margin-bottom: 25px;
+
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* кнопки */
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* кнопка */
+.contact-btn {
+  flex: 1;
+  padding: 10px 12px;
+
+  border: 1px solid rgba(107, 74, 52, 0.4);
+  border-radius: 10px;
+
+  text-decoration: none;
+  color: #6b4a34;
+
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+
+  transition: 0.3s;
+}
+
+/* hover */
+.contact-btn:hover {
+  background: #b48c50;
+  color: #fff;
+}
+
+/* ===== АНИМАЦИЯ ===== */
+
+.contacts-section.show .contacts-title {
+  animation: fadeUp 1s ease forwards;
+}
+
+.contacts-section.show .contacts-text {
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.3s;
+}
+
+.contacts-section.show .contact-name {
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.6s;
+}
+
+.contacts-section.show .contact-buttons {
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.9s;
+}
