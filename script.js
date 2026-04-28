@@ -128,7 +128,20 @@ if (details) {
 
   observer.observe(details);
 }
+const contacts = document.querySelector('.contacts-section');
 
+if (contacts) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        contacts.classList.add('show');
+        observer.unobserve(contacts);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  observer.observe(contacts);
+}
 const form = document.querySelector('.rsvp-form');
 const success = document.querySelector('.rsvp-success');
 
